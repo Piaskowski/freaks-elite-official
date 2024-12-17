@@ -1,0 +1,5 @@
+<thlogic>
+    <attr sel="#navbar" th:fragment="navbarFragment"/>
+    <attr sel="#adminPanel" th:if="${isAdmin}"/>
+    <attr sel="#logout" th:if="${isAdmin}"/>
+</thlogic>

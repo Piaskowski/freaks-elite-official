@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en" th="http://www.thymeleaf.org" xmlns:th="http://www.w3.org/1999/xhtml">
+<head id="head">
+    <!-- head content -->
+</head>
+    <body>
+    <header class="header">
+        <div id="navbar"></div>
+    </header>
+    <div id="pageContainer">
+        <div id="admin-navbar">
+            <!-- admin navbar fragment -->
+        </div>
+        <div id="admin-forms">
+            <div class="form">
+                <form id="admin-form" method="post" th:action="@{/admin-panel/linki}" th:object="${linkDto}">
+                    <p>Youtube video</p>
+                    <input id="url" type="text" name="url" th:field="*{url}">
+                    <p class="text-danger" th:if="${#fields.hasErrors('url')}" th:errors="*{url}"></p>
+                    <button class="black-button" id="submit" type="submit">Zatwierdź</button>
+                </form>
+            </div>
+        </div>
+    </div>
+    <div id="footer">
+        <!-- footer content -->
+    </div>
+    </body>
+</html>

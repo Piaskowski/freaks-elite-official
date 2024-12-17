@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en" th="http://www.thymeleaf.org" xmlns:th="http://www.w3.org/1999/xhtml">
+    <head id="head">
+        <!-- head content -->
+    </head>
+    <body>
+    <header class="header">
+        <div id="navbar"></div>
+    </header>
+    <div id="pageContainer" class="display-flex">
+        <div id="admin-navbar">
+            <!-- admin navbar fragment -->
+        </div>
+        <div id="admin-forms">
+            <div class="form">
+                <form id="admin-form" method="post" enctype="multipart/form-data" th:action="@{${action}}" th:object="${bandMemberDto}">
+                    <p>Imię</p>
+                    <input id="first-name" type="text" name="first-name" th:field="*{name}">
+                    <p class="text-danger" th:if="${#fields.hasErrors('name')}" th:errors="*{name}"></p>
+                    <p>Nazwisko</p>
+                    <input id="last-name" type="text" name="last-name" th:field="*{surname}">
+                    <p class="text-danger" th:if="${#fields.hasErrors('surname')}" th:errors="*{surname}"></p>
+                    <p>Pseudonim</p>
+                    <input id="nick-name" type="text" name="nick-name" th:field="*{nick}">
+                    <p>Opis</p>
+                    <textarea rows="10" id="description" th:field="*{description}"></textarea>
+                    <p class="text-danger" th:if="${#fields.hasErrors('description')}" th:errors="*{description}"></p>
+                    <p>Facebook</p>
+                    <input id="facebook-url" type="text" name="facebook-url" th:field="*{facebookUrl}">
+                    <p>Instagram</p>
+                    <input id="instagram-url" type="text" name="instagram-url" th:field="*{instagramUrl}">
+                    <p>Zdjęcie</p>
+                    <input id="image" name="file" type="file" accept=".jpg, .jpeg, .jpe, .png, .pns" value="Upload" th:field="*{imgFile}">
+                    <p class="text-danger" th:if="${#fields.hasErrors('imgFile')}" th:errors="*{imgFile}"></p>
+                    <input type="hidden" th:name="${_csrf.parameterName}" th:value="${_csrf.token}">
+                    <button class="black-button" id="submit" type="submit">Zatwierdź</button>
+                </form>
+            </div>
+        </div>
+    </div>
+    <div id="footer">
+        <!-- footer content -->
+    </div>
+    </body>
+</html>

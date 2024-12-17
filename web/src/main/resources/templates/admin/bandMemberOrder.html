@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en" th="http://www.thymeleaf.org" xmlns:th="http://www.w3.org/1999/xhtml">
+<head id="head">
+    <!-- head content -->
+</head>
+<body>
+<header class="header">
+    <div id="navbar"></div>
+</header>
+<div id="pageContainer">
+    <div id="admin-navbar">
+        <!-- admin navbar fragment -->
+    </div>
+    <div id="admin-forms">
+        <div class="form">
+            <form method="post" th:action="@{/admin-panel/zespol/kolejnosc}" th:object="${editBandMemberArrangementDto}">
+                <div class="arrange-bandMember">
+                    <div class="band-member" th:each="member, itemStat : *{members}">
+                        <div class="band-member-img">
+                            <img th:src="@{*{members[__${itemStat.index}__].img}}">
+                        </div>
+                        <div class="band-member-txt">
+                            <div class="band-member-description" >
+                                <h4 class="band-member-name" >
+                                    <p>
+                                        <span th:text="*{members[__${itemStat.index}__].name}" style="display:inline;" ></span> "<span th:text="*{members[__${itemStat.index}__].nick}" style="display:inline;"></span>" <span th:text="*{members[__${itemStat.index}__].surname}" style="display:inline;"></span>
+                                    </p>
+                                </h4>
+                                <input type="hidden" th:field="*{members[__${itemStat.index}__].id}">
+                                <input type="hidden" th:field="*{members[__${itemStat.index}__].name}">
+                                <input id="iArrangement" type="hidden" th:field="*{members[__${itemStat.index}__].arrangement}">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="admin-buttons">
+                    <!-- admin create new post -->
+                    <div name="btnCreate" class="btn-admin btn-create">
+                        <a onclick="this.closest('form').submit();">Zapisz</a>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+<div id="footer">
+    <!-- footer content -->
+</div>
+</body>
+</html>

@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en" th="http://www.thymeleaf.org" xmlns:th="http://www.w3.org/1999/xhtml">
+    <head id="head">
+        <!-- head content -->
+    </head>
+    <body id="body-news">
+    <header class="header">
+        <div id="navbar"></div>
+    </header>
+    <div class="page-banner">
+        <div class="mask2">
+            <img src="/images/concerts/concerts-banner.jpg">
+        </div>
+        <h1>Najbliższe Koncerty</h1>
+    </div>
+    <div id="pageContainer" style="background-color:none important!;">
+        <div th:if="${isAdmin}" class="admin-buttons">
+            <!-- admin create new post -->
+            <div name="btnCreate" class="btn-admin btn-create">
+                <a href="/admin-panel/dodaj-wydarzenie">Dodaj Wydarzenie &#10010;</a>
+            </div>
+        </div>
+        <div id="concerts">
+            <div class="no-events-info" th:if="${#lists.isEmpty(concerts)}">
+                <h2>Brak wydarzeń</h2>
+                <div class="solid-line line-black"></div>
+                <h3>Obserwuj nas na bieżąco, aby nie przegapić koncertów!</h3>
+                <div class="btn">
+                    <a href="/">Strona główna</a>
+                </div>
+            </div>
+            <div class="row">
+                <div class="concert-card-main" th:each="concert : ${concerts}">
+                    <div class="concert-card">
+                        <a target="_blank" th:href="@{${concert.eventUrl}}">
+                            <img src="/images/concerts/concert-card.jpg">
+                        </a>
+                        <div class="concert-card-text">
+                            <h4 th:text="${concert.getDateParsedToString()}">date</h4>
+                            <h2 th:text="${concert.city}">location</h2>
+                            <h3 th:text="${concert.spot}">location</h3>
+                            <p th:text="${concert.eventName}">event name</p>
+                        </div>
+                        <div class="concert-card-buy-ticket">
+                            <h3>&#9473;&#9473; KUP BILET &#9473;&#9473;</h3>
+                            <div th:if="${isAdmin}" class="admin-buttons">
+                                <!-- admin methods -->
+                                <div name="btnEdit" class="btn-admin btn-edit">
+                                    <a th:href="@{/admin-panel/{concertId}/edytuj-wydarzenie(concertId=${concert.id})}">&#9998;</a>
+                                </div>
+                                <div name="btnDelete" class="btn-admin btn-delete">
+                                    <a th:concert-data="${concert.city} + ': ' + ${concert.spot} + ' ' + ${concert.getDateParsedToString()}"
+                                       th:onclick="|launchPopup('${concert.id}', 'Czy na pewno chcesz usunąć to wydarzenie: ' + this.getAttribute('concert-data') + '?');|"
+                                       href="javascript:void(0)">
+                                        &#10005;
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="confirm-popup-container">
+                    <!-- popup content -->
+                </div>
+            </div>
+        </div>
+    </div>
+    <div id="footer">
+        <!-- footer fragment -->
+    </div>
+    </body>
+</html>

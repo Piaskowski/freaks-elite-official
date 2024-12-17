@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<div class="confirm-popup-container">
+    <div class="confirm-popup-background"></div>
+    <div class="confirm-popup">
+        <form method="post" th:object="${deleteObject}">
+            <h4>Czy jesteś pewien?</h4>
+            <input id="objectId" type="hidden" th:field="*{id}">
+            <input type="hidden" th:name="${_csrf.parameterName}" th:value="${_csrf.token}">
+            <div class="popup-buttons">
+                <div class="btn btn-popup btn-yes">
+                    <a onclick="this.closest('form').submit();" href="javascript:void(0)">Tak</a>
+
+                </div>
+                <div class="btn btn-popup btn-no">
+                    <a href="javascript:void(0)">Nie</a>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+</html>

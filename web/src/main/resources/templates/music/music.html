@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+    <html lang="pl" th="http://www.thymeleaf.org" xmlns:th="http://www.w3.org/1999/xhtml">
+    <head id="head">
+        <!-- head content -->
+    </head>
+    <body id="body-music">
+        <header class="header">
+            <div id="navbar"></div>
+            <div class="nav-filler"></div>
+        </header>
+
+        <div id="pageContainer" width="40% !important" style="background: transparent !important;" >
+            <div th:if="${isAdmin}" class="admin-buttons">
+                <!-- admin methods -->
+                <div name="btnEdit" class="btn-admin btn-edit">
+                    <a href="/admin-panel/linki">Edytuj Link &#9998;</a>
+                </div>
+            </div>
+            <div id="yt-embed" class="hidden blurred" th:object="${ytVideoLink}">
+                <iframe th:src="@{*{url}}"
+                        title="YouTube video player"
+                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                        referrerpolicy="strict-origin-when-cross-origin" allowfullscreen>
+                </iframe>
+            </div>
+            <div id="music-portals" class="hidden blurred">
+                <h1 class="rubik-80s-fade-regular">Możesz posłuchać nas na:</h1>
+                <div class="solid-line"></div>
+                <div id="music-portals-links">
+                    <div class="yt">
+                        <a id="youtube-link" target="_blank">
+                            <i class="youtube-icon"></i>
+                        </a>
+                    </div>
+                    <div class="ytm">
+                        <a id="youtube-music-link" target="_blank">
+                            <i class="youtubemusic-icon"></i>
+                        </a>
+                    </div>
+                    <div class="td">
+                        <a id="tidal-link" target="_blank">
+                            <i class="tidal-icon"></i>
+                        </a>
+                    </div>
+                    <div class="sp">
+                        <a id="spotify-link" target="_blank">
+                            <i class="spotify-icon"></i>
+                        </a>
+                    </div>
+                    <div class="am">
+                        <a id="apple-music-link" target="_blank">
+                            <i class="apple-music-icon"></i>
+                        </a>
+                    </div>
+                </div>
+                <div class="solid-line"></div>
+            </div>
+        </div>
+        <div id="footer">
+            <!-- footer fragment -->
+        </div>
+    </body>
+</html>

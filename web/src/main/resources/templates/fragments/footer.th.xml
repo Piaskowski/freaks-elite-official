@@ -1,0 +1,16 @@
+<thlogic>
+    <attr sel="#footer" th:fragment="footerFragment"/>
+
+    <attr sel="#footer-home" th:href="@{/}"/>
+
+    <attr sel="#facebook" th:href="@{https://www.facebook.com/FreaksEliteOfficial}"/>
+    <attr sel="#instagram" th:href="@{https://www.instagram.com/freaks_elite_official/}"/>
+    <attr sel="#youtube" th:href="@{https://www.youtube.com/@FreaksElite_official}"/>
+    <attr sel="#extra-link" th:href="@{/}"/>
+
+    <attr sel="#spotify" th:href="@{https://open.spotify.com/artist/7dt9fqOssCA6iWkMl5xrTA}"/>
+    <attr sel="#youtube-music" th:href="@{https://music.youtube.com/channel/UCvlGfaiD5VGGIez40jaxt7Q}"/>
+    <attr sel="#tidal" th:href="@{/}"/>
+    <attr sel="#apple-music" th:href="@{/}"/>
+
+</thlogic>

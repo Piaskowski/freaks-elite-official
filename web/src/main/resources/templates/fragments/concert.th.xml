@@ -1,0 +1,3 @@
+<thlogic>
+    <attr sel="#concerts" th:fragment="concertFragment"/>
+</thlogic>

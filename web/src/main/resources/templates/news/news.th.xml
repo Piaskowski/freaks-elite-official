@@ -1,0 +1,6 @@
+<thlogic>
+    <attr sel="#navbar" th:replace="~{fragments/navbar :: navbarFragment}"/>
+    <attr sel="#head" th:replace="~{fragments/head :: headFragment}"/>
+    <attr sel=".confirm-popup-container" th:replace="~{admin/fragments/popup :: popupFragment}"/>
+    <attr sel="#footer" th:replace="~{fragments/footer :: footerFragment}" />
+</thlogic>

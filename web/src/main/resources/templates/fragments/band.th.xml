@@ -1,0 +1,3 @@
+<thlogic>
+    <attr sel="#band" th:fragment="bandFragment"/>
+</thlogic>

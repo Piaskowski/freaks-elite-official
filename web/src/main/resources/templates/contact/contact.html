@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+    <html lang="en" th="http://www.thymeleaf.org" xmlns:th="http://www.w3.org/1999/xhtml">
+    <head id="head">
+        <!-- head content -->
+    </head>
+    <body>
+        <header class="header">
+            <div id="navbar"></div>
+        </header>
+        <div id="pageContainer">
+            <div class="form">
+                <h1>Kontakt</h1>
+                <div id="rider">
+                    <form method="get" th:action="@{download/rider}">
+                        <p>W sprawach koncertów pisz do nas na adres:
+                            freaks.elite.offcial@gmail.com</p><br>
+                        <button id="downloadRider" type="submit">Pobierz Rider</button>
+                    </form>
+                </div>
+                <div id="email-message">
+                    <form id="contactForm" method="post" th:action="@{kontakt}" th:object="${mail}">
+                        <p>Wyślij do nas wiadomość: </p>
+                        <input id="name" type="text" placeholder="Imię*" name="name" th:field="*{name}">
+                        <p class="text-danger" th:if="${#fields.hasErrors('name')}" th:errors="*{name}"></p>
+                        <input id="email-address" type="text" placeholder="Adres email*" th:field="*{email}">
+                        <p class="text-danger" th:if="${#fields.hasErrors('email')}" th:errors="*{email}"></p>
+                        <input id="subject" type="text" placeholder="Temat*" th:field="*{subject}">
+                        <p class="text-danger" th:if="${#fields.hasErrors('subject')}" th:errors="*{subject}"></p>
+                        <textarea rows="10" id="message" placeholder="Teść*" th:field="*{content}"></textarea>
+                        <p class="text-danger" th:if="${#fields.hasErrors('content')}" th:errors="*{content}"></p>
+                        <div class="checkbox">
+                            <input type="checkbox" required>
+                            <p>Akceptuję politykę prywatności</p>
+                        </div>
+                        <button id="sendMessage" type="submit">Wyślij</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+        <div id="footer">
+            <!-- footer fragment -->
+        </div>
+    </body>
+</html>

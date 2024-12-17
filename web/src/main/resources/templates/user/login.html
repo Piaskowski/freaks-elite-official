@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en" th="http://www.thymeleaf.org" xmlns:th="http://www.w3.org/1999/xhtml">
+    <head id="head">
+        <!-- head content -->
+    </head>
+    <body>
+        <div id="pageContainer">
+            <div id="login-form">
+                <div class="form">
+                    <form class="login-form" method="post" th:action="@{/login}" >
+                        <p>Login</p>
+                        <input id="username" type="text" name="username" >
+                        <p>Hasło</p>
+                        <input id="password" type="password" name="password" >
+                        <button class="black-button" id="submit" type="submit">Zaloguj</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </body>
+</html>

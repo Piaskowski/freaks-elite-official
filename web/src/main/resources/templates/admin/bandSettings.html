@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en" th="http://www.thymeleaf.org" xmlns:th="http://www.w3.org/1999/xhtml">
+    <head id="head">
+        <!-- head content -->
+    </head>
+    <body>
+    <header class="header">
+        <div id="navbar"></div>
+    </header>
+    <div id="pageContainer">
+        <div id="admin-navbar">
+            <!-- admin navbar fragment -->
+        </div>
+        <div id="admin-forms">
+            <div class="form">
+                <div class="select-bandMember">
+                    <div class="band-member" th:each="bandMember : ${bandMembers}">
+                        <div class="band-member-img">
+                            <img th:src="@{${bandMember.img}}">
+                        </div>
+                        <div class="band-member-txt">
+                            <div class="band-member-description" >
+                                <h4 class="band-member-name" >
+                                    <p><span th:text="${bandMember.name}" style="display:inline;" ></span> "<span th:text="${bandMember.nick}" style="display:inline;"></span>" <span th:text="${bandMember.surname}" style="display:inline;"></span></p>
+                                </h4>
+                            </div>
+                            <div class="admin-buttons">
+                                <!-- admin methods -->
+                                <div name="btnEdit" class="btn-admin btn-edit">
+                                    <a th:href="@{/admin-panel/{memberId}/edytuj-członka-zespołu(memberId=${bandMember.id})}">&#9998;</a>
+                                </div>
+                                <div name="btnDelete" class="btn-admin btn-delete">
+                                    <a th:data-name="${bandMember.name} + ' ' +${bandMember.surname}"
+                                       th:onclick="|launchPopup('${bandMember.id}', 'Czy na pewno chcesz usunąć ' + this.getAttribute('data-name') + ' z zespołu?');|"
+                                       href="javascript:void(0)">
+                                        &#10005;
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="admin-buttons">
+                    <!-- admin create new band member -->
+                    <div name="btnCreate" class="btn-admin btn-create">
+                        <a href="/admin-panel/band-member">Dodaj członka zespołu</a>
+                    </div>
+                </div>
+                <div class="admin-buttons">
+                    <!-- admin edit arrangement -->
+                    <div name="btnEdit" class="btn-admin btn-edit">
+                        <a href="/admin-panel/zespol/kolejnosc">Edytuj kolejność</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="confirm-popup-container">
+            <!-- popup content -->
+        </div>
+    </div>
+    <div id="footer">
+        <!-- footer content -->
+    </div>
+    </body>
+</html>

@@ -1,0 +1,7 @@
+<thlogic>
+    <attr sel="#admin-navbar" th:fragment="adminNavFragment"/>
+    <attr sel="#new-post" th:classappend="${page == '/admin-panel/dodaj-post' ? 'active' : ''}"/>
+    <attr sel="#new-concert" th:classappend="${page == '/admin-panel/dodaj-wydarzenie' ? 'active' : ''}"/>
+    <attr sel="#edit-bandMembers" th:classappend="${page == '/admin-panel/zespol' || page == '/admin-panel/band-member' ? 'active' : ''}"/>
+    <attr sel="#edit-links" th:classappend="${page == '/admin-panel/linki' ? 'active' : ''}"/>
+</thlogic>

@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en" th="http://www.thymeleaf.org" xmlns:th="http://www.w3.org/1999/xhtml">
+    <head id="head">
+        <!-- head content -->
+    </head>
+    <body>
+    <header class="header">
+        <div id="navbar"></div>
+    </header>
+    <div id="pageContainer">
+        <div id="admin-navbar">
+            <!-- admin navbar fragment -->
+        </div>
+        <div id="admin-forms">
+            <div class="form">
+                <form id="admin-form" method="post" enctype="multipart/form-data" th:action="@{${action}}" th:object="${newsDto}">
+                    <p>Tytuł</p>
+                    <input id="title" type="text" name="title" th:field="*{title}">
+                    <p class="text-danger" th:if="${#fields.hasErrors('title')}" th:errors="*{title}"></p>
+                    <p>Link</p>
+                    <input id="url" type="text" name="url" th:field="*{url}">
+                    <p>Treść</p>
+                    <textarea rows="10" id="content" th:field="*{content}"></textarea>
+                    <p class="text-danger" th:if="${#fields.hasErrors('content')}" th:errors="*{content}"></p>
+                    <p>Zdjęcie</p>
+                    <input id="imgFile" th:field="*{imgFile}" name="file" type="file" accept=".jpg, .jpeg, .jpe, .png, .pns" value="Upload">
+                    <p class="text-danger" th:if="${#fields.hasErrors('imgFile')}" th:errors="*{imgFile}"></p>
+                    <input type="hidden" th:name="${_csrf.parameterName}" th:value="${_csrf.token}">
+                    <button class="black-button" id="submit" type="submit">Zatwierdź</button>
+                </form>
+            </div>
+        </div>
+    </div>
+    <div id="footer">
+        <!-- footer content -->
+    </div>
+    </body>
+</html>

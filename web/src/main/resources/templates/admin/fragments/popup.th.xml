@@ -1,0 +1,3 @@
+<thlogic>
+    <attr sel=".confirm-popup-container" th:fragment="popupFragment"/>
+</thlogic>

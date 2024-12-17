@@ -1,0 +1,14 @@
+<thlogic>
+    <attr sel="#navbar" th:replace="~{fragments/navbar :: navbarFragment}"/>
+    <attr sel="#head" th:replace="~{fragments/head :: headFragment}"/>
+
+    <attr sel="#name" th:text="${bandMember.getName()}"/>
+    <attr sel="#surname" th:text="${bandMember.getSurname()}"/>
+    <attr sel="#nick" th:text="${bandMember.getNick()}"/>
+    <attr sel="#description" th:text="${bandMember.getDescription()}"/>
+
+    <attr sel="#footer" th:replace="~{fragments/footer :: footerFragment}" />
+    <attr sel="#band" th:replace="~{fragments/band :: bandFragment}" />
+    <attr sel="#concerts" th:replace="~{fragments/concert :: concertFragment}" />
+    <attr sel="#container-posts" th:replace="~{fragments/post :: postFragment}" />
+</thlogic>

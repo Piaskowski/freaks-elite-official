@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en" th="http://www.thymeleaf.org" xmlns:th="http://www.w3.org/1999/xhtml">
+    <section class="hidden" id="concerts" th:unless="${#lists.isEmpty(concerts)}">
+        <h1>Nadchodzące Koncerty</h1>
+        <div class="row">
+            <div class="concert-card-main hidden hidden-left blurred" th:each="concert : ${concerts}">
+                <div class="concert-card">
+                    <a th:href="@{${concert.eventUrl}}">
+                        <img src="/images/concerts/concert-card-yellow.jpg">
+                    </a>
+                    <div class="concert-card-text text-black">
+                        <h4 th:text="${concert.getDateParsedToString()}">date</h4>
+                        <h2 th:text="${concert.city}">location</h2>
+                        <h3 th:text="${concert.spot}">location</h3>
+                        <p th:text="${concert.eventName}">event name</p>
+                    </div>
+                    <div class="concert-card-buy-ticket text-black">
+                        <h3>&#9473;&#9473; KUP BILET &#9473;&#9473;</h3>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="btn btn-concerts">
+            <a href="koncerty">Więcej</a>
+        </div>
+    </section>
+</html>

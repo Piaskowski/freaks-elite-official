@@ -1,0 +1,3 @@
+<thlogic>
+    <attr sel="#container-posts" th:fragment="postFragment"/>
+</thlogic>

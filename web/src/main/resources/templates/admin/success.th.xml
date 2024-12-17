@@ -1,0 +1,6 @@
+<thlogic>
+    <attr sel="#navbar" th:replace="~{fragments/navbar :: navbarFragment}"/>
+    <attr sel="#admin-navbar" th:replace="~{admin/fragments/adminNav :: adminNavFragment}"/>
+    <attr sel="#head" th:replace="~{fragments/head :: headFragment}"/>
+    <attr sel="#footer" th:replace="~{fragments/footer :: footerFragment}" />
+</thlogic>
