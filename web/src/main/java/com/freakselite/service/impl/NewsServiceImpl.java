@@ -1,6 +1,6 @@
 package com.freakselite.service.impl;
 
-import com.freakselite.dao.daoImpl.NewsDao;
+import com.freakselite.dao.daoImpl.NewsDaoImpl;
 import com.freakselite.model.News;
 import com.freakselite.service.NewsService;
 import lombok.extern.slf4j.Slf4j;
@@ -18,32 +18,32 @@ import java.util.List;
 public class NewsServiceImpl implements NewsService {
 
     // == fields ==
-    private final NewsDao newsDao;
+    private final NewsDaoImpl newsDaoImpl;
 
     // == constructors ==
     @Autowired
-    public NewsServiceImpl(NewsDao newsDao) {
-        this.newsDao = newsDao;
+    public NewsServiceImpl(NewsDaoImpl newsDaoImpl) {
+        this.newsDaoImpl = newsDaoImpl;
     }
 
     // == public methods ==
     @Override
     public List<News> getNews() {
-        return newsDao.getTop(2);
+        return newsDaoImpl.getTop(2);
     }
 
     public Page<News> findPaginated(Pageable pageable){
         int pageSize = pageable.getPageSize();
         int currentPage = pageable.getPageNumber();
 
-        List<News> news = newsDao.getOffset(currentPage, pageSize);
-        int count = newsDao.count();
+        List<News> news = newsDaoImpl.getOffset(currentPage, pageSize);
+        int count = newsDaoImpl.count();
 
         return new PageImpl<>(news, PageRequest.of(currentPage, pageSize), count);
     }
 
     @Override
     public boolean deletePost(int id) {
-        return newsDao.delete(id);
+        return newsDaoImpl.delete(id);
     }
 }

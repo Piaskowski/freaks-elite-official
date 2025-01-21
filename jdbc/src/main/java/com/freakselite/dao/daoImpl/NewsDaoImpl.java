@@ -1,6 +1,6 @@
 package com.freakselite.dao.daoImpl;
 
-import com.freakselite.dao.Dao;
+import com.freakselite.dao.NewsDao;
 import com.freakselite.model.News;
 import com.freakselite.rowMappers.NewsRowMapper;
 import lombok.extern.slf4j.Slf4j;
@@ -15,16 +15,16 @@ import java.util.List;
 
 @Slf4j
 @Repository
-public class NewsDao implements Dao<News> {
+public class NewsDaoImpl implements NewsDao {
 
     // == fields ==
-    private NamedParameterJdbcTemplate jdbcTemplate;
-    private SimpleJdbcInsert simpleJdbcInsert;
+    private final NamedParameterJdbcTemplate jdbcTemplate;
+    private final SimpleJdbcInsert simpleJdbcInsert;
     private final String dbName = "news";
 
     // == constructors ==
     @Autowired
-    public NewsDao(NamedParameterJdbcTemplate jdbcTemplate, SimpleJdbcInsert simpleJdbcInsert) {
+    public NewsDaoImpl(NamedParameterJdbcTemplate jdbcTemplate, SimpleJdbcInsert simpleJdbcInsert) {
         this.jdbcTemplate = jdbcTemplate;
         this.simpleJdbcInsert = simpleJdbcInsert;
     }
@@ -37,13 +37,7 @@ public class NewsDao implements Dao<News> {
                 dbName +
                 " WHERE id = :id";
 
-        News news = jdbcTemplate.queryForObject(query, args, new NewsRowMapper());
-        return news;
-    }
-
-    @Override
-    public List<News> getAll() {
-        return null;
+        return jdbcTemplate.queryForObject(query, args, new NewsRowMapper());
     }
 
     @Override

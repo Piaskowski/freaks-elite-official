@@ -1,6 +1,6 @@
 package com.freakselite.service.impl;
 
-import com.freakselite.dao.daoImpl.NewsDao;
+import com.freakselite.dao.daoImpl.NewsDaoImpl;
 import com.freakselite.model.News;
 import com.freakselite.service.PaginationService;
 import lombok.Setter;
@@ -15,12 +15,12 @@ public class PaginationServiceImpl implements PaginationService<News> {
     // == fields ==
     @Setter
     private int limit = 5;
-    private final NewsDao newsDao;
+    private final NewsDaoImpl newsDaoImpl;
 
     // == constructor ==
     @Autowired
-    public PaginationServiceImpl(NewsDao newsDao){
-        this.newsDao = newsDao;
+    public PaginationServiceImpl(NewsDaoImpl newsDaoImpl){
+        this.newsDaoImpl = newsDaoImpl;
     }
 
     // == public methods ==
@@ -36,7 +36,7 @@ public class PaginationServiceImpl implements PaginationService<News> {
 
     @Override
     public List<News> getPage(int pageNo, int pageSize) {
-        return newsDao.getOffset(pageNo, pageSize);
+        return newsDaoImpl.getOffset(pageNo, pageSize);
     }
 
     @Override

@@ -1,6 +1,6 @@
 package com.freakselite.dao.daoImpl;
 
-import com.freakselite.dao.Dao;
+import com.freakselite.dao.PlannedConcertDao;
 import com.freakselite.model.PlannedConcert;
 import com.freakselite.rowMappers.PlannedConcertRowMapper;
 import lombok.extern.slf4j.Slf4j;
@@ -16,7 +16,7 @@ import java.util.List;
 
 @Slf4j
 @Repository
-public class PlannedConcertDao implements Dao<PlannedConcert> {
+public class PlannedConcertDaoImpl implements PlannedConcertDao {
 
     // == fields ==
     private final NamedParameterJdbcTemplate jdbcTemplate;
@@ -25,7 +25,7 @@ public class PlannedConcertDao implements Dao<PlannedConcert> {
 
     // == constructors ==
     @Autowired
-    public PlannedConcertDao(NamedParameterJdbcTemplate jdbcTemplate, SimpleJdbcInsert simpleJdbcInsert){
+    public PlannedConcertDaoImpl(NamedParameterJdbcTemplate jdbcTemplate, SimpleJdbcInsert simpleJdbcInsert){
         this.jdbcTemplate = jdbcTemplate;
         this.simpleJdbcInsert = simpleJdbcInsert;
     }
@@ -62,11 +62,6 @@ public class PlannedConcertDao implements Dao<PlannedConcert> {
                 " ORDER BY date LIMIT " + top;
 
         return jdbcTemplate.query(query, args, new PlannedConcertRowMapper());
-    }
-
-    @Override
-    public List<PlannedConcert> getOffset(int offset, int limit) {
-        return null;
     }
 
     @Override
@@ -111,10 +106,5 @@ public class PlannedConcertDao implements Dao<PlannedConcert> {
                 + dbName
                 + " WHERE id = :id";
         return jdbcTemplate.update(query, args) == 1;
-    }
-
-    @Override
-    public int count() {
-        return 0;
     }
 }

@@ -1,6 +1,6 @@
 package com.freakselite.security;
 
-import com.freakselite.dao.daoImpl.UserEntityDao;
+import com.freakselite.dao.daoImpl.UserEntityDaoImpl;
 import com.freakselite.model.UserEntity;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -18,18 +18,18 @@ import java.util.stream.Collectors;
 public class CustomUserDetailsService implements UserDetailsService {
 
     // == fields ==
-    UserEntityDao userEntityDao;
+    UserEntityDaoImpl userEntityDaoImpl;
 
     // == constructors ==
     @Autowired
-    public CustomUserDetailsService(UserEntityDao userEntityDao) {
-        this.userEntityDao = userEntityDao;
+    public CustomUserDetailsService(UserEntityDaoImpl userEntityDaoImpl) {
+        this.userEntityDaoImpl = userEntityDaoImpl;
     }
 
     // == public methods ==
     @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
-        UserEntity user = userEntityDao.findByUsername(username);
+        UserEntity user = userEntityDaoImpl.findByUsername(username);
         if (user != null){
 
             return new User(
