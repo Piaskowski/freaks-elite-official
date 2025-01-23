@@ -1,9 +1,9 @@
 package com.freakselite.service.impl;
 
 import com.freakselite.dao.LinksDao;
-import com.freakselite.dao.daoImpl.BandMemberDao;
-import com.freakselite.dao.daoImpl.NewsDao;
-import com.freakselite.dao.daoImpl.PlannedConcertDao;
+import com.freakselite.dao.daoImpl.BandMemberDaoImpl;
+import com.freakselite.dao.daoImpl.NewsDaoImpl;
+import com.freakselite.dao.daoImpl.PlannedConcertDaoImpl;
 import com.freakselite.exception.StorageException;
 import com.freakselite.model.BandMember;
 import com.freakselite.model.Link;
@@ -30,18 +30,18 @@ import java.util.List;
 @Service
 public class AdminServiceImpl implements AdminService {
     // == fields ==
-    private final BandMemberDao bandMemberDao;
-    private final NewsDao newsDao;
-    private final PlannedConcertDao concertDao;
+    private final BandMemberDaoImpl bandMemberDaoImpl;
+    private final NewsDaoImpl newsDaoImpl;
+    private final PlannedConcertDaoImpl concertDao;
     private final LinksDao linksDao;
     @Value(value = "${store-images-path}")
     private String imgStoragePath;
 
     // == constructors ==
     @Autowired
-    public AdminServiceImpl(BandMemberDao bandMemberDao, NewsDao newsDao, PlannedConcertDao concertDao, LinksDao linksDao) {
-        this.bandMemberDao = bandMemberDao;
-        this.newsDao = newsDao;
+    public AdminServiceImpl(BandMemberDaoImpl bandMemberDaoImpl, NewsDaoImpl newsDaoImpl, PlannedConcertDaoImpl concertDao, LinksDao linksDao) {
+        this.bandMemberDaoImpl = bandMemberDaoImpl;
+        this.newsDaoImpl = newsDaoImpl;
         this.concertDao = concertDao;
         this.linksDao = linksDao;
     }
@@ -72,15 +72,15 @@ public class AdminServiceImpl implements AdminService {
         String path = System.getProperty("user.dir");
         log.info(path);
         log.info(new File("file").getAbsolutePath());
-        return bandMemberDao.getAll();
+        return bandMemberDaoImpl.getAll();
     }
 
     @Override
     public void updateBandMemberArrangement(List<BandMember> bandMembers) {
         for (BandMember bandMember : bandMembers){
-            BandMember bandMember2 = bandMemberDao.findById(bandMember.getId());
+            BandMember bandMember2 = bandMemberDaoImpl.findById(bandMember.getId());
             bandMember2.setArrangement(bandMember.getArrangement());
-            bandMemberDao.update(bandMember2);
+            bandMemberDaoImpl.update(bandMember2);
         }
     }
 
@@ -96,8 +96,8 @@ public class AdminServiceImpl implements AdminService {
 
     @Override
     public boolean deleteBandMember(int id) {
-        BandMember bandMember = bandMemberDao.findById(id);
-        if (bandMemberDao.delete(id)){
+        BandMember bandMember = bandMemberDaoImpl.findById(id);
+        if (bandMemberDaoImpl.delete(id)){
             File bandMemberImg = new File(StaticPath.STATIC_RESOURCES + bandMember.getImg());
             return bandMemberImg.delete();
         }
@@ -106,23 +106,23 @@ public class AdminServiceImpl implements AdminService {
 
     @Override
     public boolean addPost(News news) {
-        return newsDao.insert(news);
+        return newsDaoImpl.insert(news);
     }
 
     @Override
     public News getPost(int postId) {
-        return newsDao.findById(postId);
+        return newsDaoImpl.findById(postId);
     }
 
     @Override
     public boolean editPost(News post) {
-        return newsDao.update(post);
+        return newsDaoImpl.update(post);
     }
 
     @Override
     public boolean deletePost(int id) {
-        News post = newsDao.findById(id);
-        if (newsDao.delete(id)){
+        News post = newsDaoImpl.findById(id);
+        if (newsDaoImpl.delete(id)){
             if (!post.getImg().equals(StaticPath.DEFAULT_NEWS_IMAGE)){
                 File postImg = new File(StaticPath.STATIC_RESOURCES + post.getImg());
                 return postImg.delete();
@@ -133,17 +133,17 @@ public class AdminServiceImpl implements AdminService {
 
     @Override
     public boolean addBandMember(BandMember bandMember) {
-        return bandMemberDao.insert(bandMember);
+        return bandMemberDaoImpl.insert(bandMember);
     }
 
     @Override
     public boolean editBandMember(BandMember bandMember) {
-        return bandMemberDao.update(bandMember);
+        return bandMemberDaoImpl.update(bandMember);
     }
 
     @Override
     public BandMember getBandMember(int memberId) {
-        return bandMemberDao.findById(memberId);
+        return bandMemberDaoImpl.findById(memberId);
     }
 
     @Override

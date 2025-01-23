@@ -1,6 +1,6 @@
 package com.freakselite.service.impl;
 
-import com.freakselite.dao.daoImpl.PlannedConcertDao;
+import com.freakselite.dao.daoImpl.PlannedConcertDaoImpl;
 import com.freakselite.model.PlannedConcert;
 import com.freakselite.service.ConcertsService;
 import lombok.extern.slf4j.Slf4j;
@@ -14,22 +14,22 @@ import java.util.List;
 public class ConcertsServiceImpl implements ConcertsService {
 
     // == fields ==
-    private final PlannedConcertDao plannedConcertDao;
+    private final PlannedConcertDaoImpl plannedConcertDaoImpl;
 
     // == constructors ==
     @Autowired
-    public ConcertsServiceImpl(PlannedConcertDao plannedConcertDao) {
-        this.plannedConcertDao = plannedConcertDao;
+    public ConcertsServiceImpl(PlannedConcertDaoImpl plannedConcertDaoImpl) {
+        this.plannedConcertDaoImpl = plannedConcertDaoImpl;
     }
 
     // == public methods ==
     @Override
     public List<PlannedConcert> getConcerts() {
-        return plannedConcertDao.getAll();
+        return plannedConcertDaoImpl.getAll();
     }
 
     @Override
     public boolean deleteConcert(int id) {
-        return plannedConcertDao.delete(id);
+        return plannedConcertDaoImpl.delete(id);
     }
 }

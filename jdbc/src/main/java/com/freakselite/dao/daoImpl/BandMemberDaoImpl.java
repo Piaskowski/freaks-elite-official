@@ -1,6 +1,6 @@
 package com.freakselite.dao.daoImpl;
 
-import com.freakselite.dao.Dao;
+import com.freakselite.dao.BandMemberDao;
 import com.freakselite.model.BandMember;
 import com.freakselite.rowMappers.BandMemberRowMapper;
 import lombok.extern.slf4j.Slf4j;
@@ -15,7 +15,7 @@ import java.util.List;
 
 @Slf4j
 @Repository
-public class BandMemberDao implements Dao<BandMember> {
+public class BandMemberDaoImpl implements BandMemberDao {
 
     // == fields ==
     private final NamedParameterJdbcTemplate jdbcTemplate;
@@ -24,7 +24,7 @@ public class BandMemberDao implements Dao<BandMember> {
 
     // == constructors ==
     @Autowired
-    public BandMemberDao(NamedParameterJdbcTemplate jdbcTemplate, SimpleJdbcInsert simpleJdbcInsert){
+    public BandMemberDaoImpl(NamedParameterJdbcTemplate jdbcTemplate, SimpleJdbcInsert simpleJdbcInsert){
         this.jdbcTemplate = jdbcTemplate;
         this.simpleJdbcInsert = simpleJdbcInsert;
     }
@@ -44,16 +44,6 @@ public class BandMemberDao implements Dao<BandMember> {
     public List<BandMember> getAll() {
         String query = "SELECT * FROM " + dbName + " ORDER BY arrangement;";
         return jdbcTemplate.query(query, new BandMemberRowMapper());
-    }
-
-    @Override
-    public List<BandMember> getTop(int top) {
-        return null;
-    }
-
-    @Override
-    public List<BandMember> getOffset(int offset, int limit) {
-        return null;
     }
 
     @Override
@@ -103,10 +93,5 @@ public class BandMemberDao implements Dao<BandMember> {
                 + " WHERE id = :id";
 
         return jdbcTemplate.update(query, args) == 1;
-    }
-
-    @Override
-    public int count() {
-        return 0;
     }
 }

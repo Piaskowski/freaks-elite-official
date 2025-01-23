@@ -12,7 +12,7 @@ import org.springframework.stereotype.Repository;
 
 @Slf4j
 @Repository
-public class UserEntityDao implements com.freakselite.dao.UserEntityDao {
+public class UserEntityDaoImpl implements com.freakselite.dao.UserEntityDao {
 
     // == fields ==
     private final NamedParameterJdbcTemplate jdbcTemplate;
@@ -20,7 +20,7 @@ public class UserEntityDao implements com.freakselite.dao.UserEntityDao {
 
     // == constructor ==
     @Autowired
-    public UserEntityDao(NamedParameterJdbcTemplate jdbcTemplate) {
+    public UserEntityDaoImpl(NamedParameterJdbcTemplate jdbcTemplate) {
         this.jdbcTemplate = jdbcTemplate;
     }
 
