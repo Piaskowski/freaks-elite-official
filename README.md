@@ -1,23 +1,6 @@
 <!-- Improved compatibility of back to top link: See: https://github.com/othneildrew/Best-README-Template/pull/73 -->
 <a id="readme-top"></a>
-<!--
-*** Thanks for checking out the Best-README-Template. If you have a suggestion
-*** that would make this better, please fork the repo and create a pull request
-*** or simply open an issue with the tag "enhancement".
-*** Don't forget to give the project a star!
-*** Thanks again! Now go create something AMAZING! :D
--->
 
-
-
-<!-- PROJECT SHIELDS -->
-<!--
-*** I'm using markdown "reference style" links for readability.
-*** Reference links are enclosed in brackets [ ] instead of parentheses ( ).
-*** See the bottom of this document for the declaration of the reference variables
-*** for contributors-url, forks-url, etc. This is an optional, concise syntax you may use.
-*** https://www.markdownguide.org/basic-syntax/#reference-style-links
--->
 ![obraz](https://github.com/user-attachments/assets/7f48d04b-e19a-48b7-bc94-26f9484a33f2)
 
 <!-- BUILT WITH -->
@@ -30,6 +13,7 @@
 - [![MySql][MySQL Connector Java]][MySQL-url]
 - [![Jakarta][Jakarta Mail API]][Jakarta-url]
 
+<p align="right">(<a href="#readme-top">back to top</a>)</p>
 <!-- GETTING STARTED -->
 ## Getting Started
 ### Installation
@@ -114,7 +98,7 @@
     INSERT INTO `freaks`.`roles` (`id`, `name`) VALUES ('2', 'USER');
     ```
  6. Create the admin user:
-      - add a user to the `users` table
+      - add a user to the `users` table (generate a [bcrypt hash](https://bcrypt-generator.com/) for password and put it as a `password` by inserting the user)
       - add a record to the `users_roles` table:
         ```sql
         INSERT INTO `freaks`.`users_roles`
@@ -142,14 +126,31 @@
         email-recipient=examplee@gmail.com
       ```
 
-
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
 <!-- USAGE -->
 ## Usage
 
+### Application content:
+  - Home page - You can find here the Band description and learn something about its members. Also you can find here the lates news, upcoming concerts and links to our social and music portals.
+
+  - News - all posted newses:![1](https://github.com/user-attachments/assets/090de272-7434-4503-bd48-01d2a61e7fd5)
+  
+  - Concerts - all upcoming concerts: ![2](https://github.com/user-attachments/assets/4e43fbc4-97eb-4085-b8c5-231ee242672e)
+  
+  - Music - latest music clip and links to the band music portals ![obraz](https://github.com/user-attachments/assets/ed46c5c9-6fed-4694-8caa-1f8f0b82fb90)
+    
+  - Contact - message form and a band rider available for downloading: ![obraz](https://github.com/user-attachments/assets/7d485f92-7eb9-43ff-8629-604c9f424eed)
+    
+  - Admin Panel - Page content maintanence and management: ![obraz](https://github.com/user-attachments/assets/ca6ff8a3-1c4b-454f-b97f-f76e7217e389)
+
+<p align="right">(<a href="#readme-top">back to top</a>)</p>
+
 <!-- ROADMAP -->
 ## Roadmap
+
+- [ ] Responsive design
+- [ ] Add `Gallery`
 
 <!-- CONTACT -->
 ## Contact
